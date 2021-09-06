@@ -4,20 +4,58 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jijiejiojio</title>
+  <title>MySQL索引 | jijiejiojio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Set render engine for 360 browser -->
   <meta name="renderer" content="webkit">
   <!-- No Baidu Siteapp-->
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="jijiejiojio">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Mysql 逻辑架构简介整体架构图 连接层 最上层是一些客户端和连接服务，包含本地 sock 通信和大多数基于客户端&#x2F;服务端工具实现的类似于 tcp&#x2F;ip 的通信。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于 SSL 的安全链接。服务器也会为安全接入的每个客户端验证它所具有的操作权限。  服务层 M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL索引">
+<meta property="og:url" content="http://example.com/2021/09/06/MySQL%E7%B4%A2%E5%BC%95/index.html">
 <meta property="og:site_name" content="jijiejiojio">
+<meta property="og:description" content="Mysql 逻辑架构简介整体架构图 连接层 最上层是一些客户端和连接服务，包含本地 sock 通信和大多数基于客户端&#x2F;服务端工具实现的类似于 tcp&#x2F;ip 的通信。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于 SSL 的安全链接。服务器也会为安全接入的每个客户端验证它所具有的操作权限。  服务层 M">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903095621010.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903100540095.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903100612461.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903100624697.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903103811921.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903110048494.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210906170235746.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903115907286.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903142444411.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903141129696.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903142523740.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903141754175.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903142546759.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903142154853.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903144352260.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903144722891.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903145030484.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903145150502.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903145358786.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903145605352.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903150646306.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903150839576.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903151158008.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903151125065.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903183959071.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903184324977.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903184729301.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903184908526.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903185028353.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903185040754.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210906102030857.png">
+<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210906102101045.png">
+<meta property="article:published_time" content="2021-09-06T08:47:29.000Z">
+<meta property="article:modified_time" content="2021-09-06T09:11:11.176Z">
 <meta property="article:author" content="jijiejiojio">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903095621010.png">
   
   
   
@@ -68,9 +106,7 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-    <article id="post-MySQL索引" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-MySQL索引" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/09/06/MySQL%E7%B4%A2%E5%BC%95/" class="article-date">
   <time datetime="2021-09-06T08:47:29.000Z" itemprop="datePublished">2021-09-06</time>
@@ -83,8 +119,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/06/MySQL%E7%B4%A2%E5%BC%95/">MySQL索引</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL索引
     </h1>
   
 
@@ -115,6 +151,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <!-- Table of Contents -->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql-%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Mysql 逻辑架构简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE"><span class="toc-number">1.1.</span> <span class="toc-text">整体架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%B1%82"><span class="toc-number">1.1.1.</span> <span class="toc-text">连接层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%B1%82"><span class="toc-number">1.1.2.</span> <span class="toc-text">服务层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E6%93%8E%E5%B1%82"><span class="toc-number">1.1.3.</span> <span class="toc-text">引擎层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%B1%82"><span class="toc-number">1.1.4.</span> <span class="toc-text">存储层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#show-profile"><span class="toc-number">1.2.</span> <span class="toc-text">show profile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B%E5%A4%A7%E8%87%B4%E6%98%AF%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">mysql 的查询流程大致是：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL-%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.4.</span> <span class="toc-text">SQL 的执行顺序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">2.</span> <span class="toc-text">存储引擎</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84join%E6%9F%A5%E8%AF%A2%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">常见的join查询图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">索引优化分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">4.1.</span> <span class="toc-text">索引的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.2.</span> <span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E7%B4%A2%E5%BC%95"><span class="toc-number">4.3.</span> <span class="toc-text">MySQL索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#btree"><span class="toc-number">4.3.1.</span> <span class="toc-text">btree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-tree"><span class="toc-number">4.3.2.</span> <span class="toc-text">b+tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95"><span class="toc-number">4.3.3.</span> <span class="toc-text">聚簇索引和非聚簇索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E7%B4%A2%E5%BC%95%E5%88%86%E7%B1%BB"><span class="toc-number">4.4.</span> <span class="toc-text">MySQL索引分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%80%BC%E7%B4%A2%E5%BC%95"><span class="toc-number">4.4.1.</span> <span class="toc-text">单值索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="toc-number">4.4.2.</span> <span class="toc-text">唯一索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95"><span class="toc-number">4.4.3.</span> <span class="toc-text">主键索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E7%B4%A2%E5%BC%95"><span class="toc-number">4.4.4.</span> <span class="toc-text">复合索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">4.4.5.</span> <span class="toc-text">基本语法：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E7%9A%84%E6%97%B6%E6%9C%BA"><span class="toc-number">4.5.</span> <span class="toc-text">索引创建的时机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Explain-%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">4.6.</span> <span class="toc-text">Explain 性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#id"><span class="toc-number">4.6.1.</span> <span class="toc-text">id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#select-type"><span class="toc-number">4.6.2.</span> <span class="toc-text">select_type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table"><span class="toc-number">4.6.3.</span> <span class="toc-text">table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type"><span class="toc-number">4.6.4.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#possible-keys"><span class="toc-number">4.6.5.</span> <span class="toc-text">possible_keys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#key"><span class="toc-number">4.6.6.</span> <span class="toc-text">key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#key-len"><span class="toc-number">4.6.7.</span> <span class="toc-text">key_len</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ref"><span class="toc-number">4.6.8.</span> <span class="toc-text">ref</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rows"><span class="toc-number">4.6.9.</span> <span class="toc-text">rows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extra"><span class="toc-number">4.6.10.</span> <span class="toc-text">extra</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#using-filesort%E3%80%90%E4%B8%8D%E5%A5%BD%E7%9A%84%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96%E3%80%91"><span class="toc-number">4.6.10.1.</span> <span class="toc-text">using filesort【不好的，需要优化】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#using-temporary%E3%80%90%E4%B8%8D%E5%A5%BD%E7%9A%84%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96%E3%80%91"><span class="toc-number">4.6.10.2.</span> <span class="toc-text">using temporary【不好的，需要优化】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#using-index"><span class="toc-number">4.6.10.3.</span> <span class="toc-text">using index</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#using-where"><span class="toc-number">4.6.10.4.</span> <span class="toc-text">using where</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#using-join-buffer"><span class="toc-number">4.6.10.5.</span> <span class="toc-text">using join buffer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#impossible-where"><span class="toc-number">4.6.10.6.</span> <span class="toc-text">impossible where</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#select-tables-optimized-away"><span class="toc-number">4.6.10.7.</span> <span class="toc-text">select tables optimized away</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%A1%A8%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E5%B8%B8%E8%A7%81%E7%9A%84%E7%B4%A2%E5%BC%95"><span class="toc-number">4.7.</span> <span class="toc-text">单表使用索引常见的索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A3%E8%AF%80"><span class="toc-number">4.8.</span> <span class="toc-text">口诀</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">关联查询优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#left-join"><span class="toc-number">5.1.</span> <span class="toc-text">left join</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inner-join"><span class="toc-number">5.2.</span> <span class="toc-text">inner join</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%85%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E8%AF%A2"><span class="toc-number">6.</span> <span class="toc-text">慢日志查询</span></a></li></ol>
+          </div>
         
         <h1 id="Mysql-逻辑架构简介"><a href="#Mysql-逻辑架构简介" class="headerlink" title="Mysql 逻辑架构简介"></a>Mysql 逻辑架构简介</h1><h2 id="整体架构图"><a href="#整体架构图" class="headerlink" title="整体架构图"></a>整体架构图</h2><p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210903095621010.png" alt="image-20210903095621010"></p>
 <h3 id="连接层"><a href="#连接层" class="headerlink" title="连接层"></a>连接层</h3><blockquote>
@@ -427,6 +468,13 @@
 
       
       
+  <div class="article-statement">
+    <hr>  
+    1.如果本文帮到了您，不妨点一下右下角的 <a>分享到</a> 按钮。<br>
+    2.除非注明，本博文章均为原创，转载请以链接形式标明本文地址。<br>
+    3.本博文章只代表博主当时的观点或结论，与博主公司没有任何关系。<br>
+  </div>
+
     </div>
     
     <footer class="article-footer">
@@ -442,269 +490,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hashCode与equals关系和equals与==的关系" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/" class="article-date">
-  <time datetime="2021-09-02T09:29:00.000Z" itemprop="datePublished">2021-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/">hashCode与equals关系和equals与==的关系</a>
-    </h1>
+    <a href="/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">hashCode与equals关系和equals与==的关系</div>
+    </a>
   
+</nav>
 
-<!-- 开始添加字数统计-->
-    
-          <div style="margin-top:10px;">
-	    <span class="post-time">
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-keyboard-o"></i>
-	        <span class="post-meta-item-text">  字数统计: </span>
-	        <!-- 安装插件npm install hexo-wordcount --save -->
-	        <span class="post-count">1.3k字</span>
-	      </span>
-	    </span>
-	
-	    <span class="post-time">
-	      &nbsp; | &nbsp;
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-hourglass-half"></i>
-	        <span class="post-meta-item-text">  阅读时长: </span>
-	        <span class="post-count">5分</span>
-	      </span>
-	    </span>
-	</div>
-    
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="equals-与-的区别-：-是运算符，equal是方法"><a href="#equals-与-的区别-：-是运算符，equal是方法" class="headerlink" title="equals 与 ==的区别 ：==是运算符，equal是方法"></a>equals 与 ==的区别 ：==是运算符，equal是方法</h1><h1 id="equals方法的作用"><a href="#equals方法的作用" class="headerlink" title="equals方法的作用"></a>equals方法的作用</h1><p>  1、默认情况（没有覆盖equals方法）下equals方法都是调用Object类的equals方法，而Object的equals方法主要用于判断对象的内存地址引用是不是同一个地址（是不是同一个对象）。</p>
-<p>2 、要是类中覆盖了equals方法，那么就要根据具体的代码来确定equals方法的作用了，覆盖后一般都是通过对象的内容是否相等来判断对象是否相等。</p>
-<h1 id="常见的几种情况下equals-与"><a href="#常见的几种情况下equals-与" class="headerlink" title="常见的几种情况下equals 与 =="></a>常见的几种情况下equals 与 ==</h1><h2 id="比较基本类型"><a href="#比较基本类型" class="headerlink" title="比较基本类型"></a>比较基本类型</h2><p>Java基本类型：8种（int short long byte float double boolean char）</p>
-<p>只能用==，不能用equals，这里的==比较的是两个变量的值。</p>
-<h2 id="比较包装类型"><a href="#比较包装类型" class="headerlink" title="比较包装类型"></a>比较包装类型</h2><p>==比较的内存地址，new出来的对象地址不同。</p>
-<p>equals比较的是值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">Integer integer2 = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;equals:&quot;</span>+integer1.equals(integer2));</span><br><span class="line">System.out.println(<span class="string">&quot;==:&quot;</span>+(integer1 == integer2));</span><br></pre></td></tr></table></figure>
-
-<p><img src="/.com//image-20210902164326281.png" alt="image-20210902164326281"></p>
-<p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902164349984.png"></p>
-<h2 id="比较String类型"><a href="#比较String类型" class="headerlink" title="比较String类型"></a>比较String类型</h2><p>==比较的是内存地址，equals比较的是值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//String</span></span><br><span class="line">String str1 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">String str2 = <span class="keyword">new</span> String(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">String str3 = str2; <span class="comment">// 引用传递，同一对象</span></span><br><span class="line">String str4 = <span class="keyword">new</span> String(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">String str5 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">System.out.println(str1 == str2); <span class="comment">// false（str2是new的一个新地址）</span></span><br><span class="line">System.out.println(str1 == str3); <span class="comment">// false（str3和str2内存地址一样，和str1地址不同）</span></span><br><span class="line">System.out.println(str2 == str3); <span class="comment">// true（引用str2，地址相同）</span></span><br><span class="line">System.out.println(str1 == str5); <span class="comment">// true（String作为基本类型，没创建新地址）</span></span><br><span class="line">System.out.println(str4 == str2); <span class="comment">// false（内存地址不同）</span></span><br><span class="line">System.out.println(str1.equals(str2)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str1.equals(str3)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str2.equals(str3)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str2.equals(str4)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str1.equals(str5)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="比较对象类型"><a href="#比较对象类型" class="headerlink" title="比较对象类型"></a>比较对象类型</h2><p>==和equals比较的都是内存地址，因为没有equals没有被重写。默认是Object类的equals方法。</p>
-<p>如果对象类重写了equals方法，equals比较的就是值。</p>
-<h1 id="hashCode与equals方法的关系"><a href="#hashCode与equals方法的关系" class="headerlink" title="hashCode与equals方法的关系"></a>hashCode与equals方法的关系</h1><h2 id="为什么覆盖-不是重载-equals方法一定要覆盖hashCode方法"><a href="#为什么覆盖-不是重载-equals方法一定要覆盖hashCode方法" class="headerlink" title="为什么覆盖(不是重载)equals方法一定要覆盖hashCode方法"></a>为什么覆盖(不是重载)equals方法一定要覆盖hashCode方法</h2><p>因为如果只覆盖了equals而没有覆盖hashCode, 则两个不同的instance a和b 虽然equals结果(业务逻辑上)相等,但却会有不同的hashcode,这样hashmap里面会同时存在a和b,而实际上我们需要hashmap里面只能保存其中一个,因为从业务逻辑方向看它们是相等的. </p>
-<p>equals方法和hashCode方法如果不同时按你自己逻辑覆盖的话，HashMap就会出问题。</p>
-<p>比如你只覆盖了equals方法而没有覆盖hashCode方法，那么HashMap在第一步寻找链表的时候会出错，有同样值的两个对象Key1和Key2并不会指向同一个链表或桶，因为你没有提供自己的hashCode方法，那么就会使用<strong>Object的hashCode方法，该方法是根据内存地址来比较两个对象是否一致</strong>，由于Key1和Key2有不桶的内存地址，所以会指向不同的链表，这样HashMap会认为key2不存在，虽然我们期望Key1和Key2是同一个对象；</p>
-<p>反之如果只覆盖了hashCode方法而没有覆盖equals方法，那么虽然第一步操作会使Key1和Key2找到同一个链表，但是由于equals没有覆盖，那么在遍历链表的元素时，key1.equals(key2)也会失败(事实上Object的equals方法也是比较内存地址)，从而HashMap认为不存在Key2对象，这同样也是不正确的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(String age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        Student student = (Student) o;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (name != <span class="keyword">null</span> ? !name.equals(student.name) : student.name != <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> age != <span class="keyword">null</span> ? age.equals(student.age) : student.age == <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = name != <span class="keyword">null</span> ? name.hashCode() : <span class="number">0</span>;</span><br><span class="line">        result = <span class="number">31</span> * result + (age != <span class="keyword">null</span> ? age.hashCode() : <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;Student&gt; list = <span class="keyword">new</span> LinkedList&lt;Student&gt;();</span><br><span class="line">Set&lt;Student&gt; set = <span class="keyword">new</span> HashSet&lt;Student&gt;();</span><br><span class="line">Student stu1 = <span class="keyword">new</span> Student(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;17&quot;</span>);</span><br><span class="line">Student stu2 = <span class="keyword">new</span> Student(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;17&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;stu1 == stu2 : &quot;</span> + (stu1 == stu2));</span><br><span class="line">System.out.println(<span class="string">&quot;stu1.equals(stu2) : &quot;</span> + stu1.equals(stu2));</span><br><span class="line">list.add(stu1);</span><br><span class="line">list.add(stu2);</span><br><span class="line">System.out.println(<span class="string">&quot;list size:&quot;</span> + list.size());</span><br><span class="line">System.out.println(stu1.hashCode());</span><br><span class="line">System.out.println(stu2.hashCode());</span><br><span class="line">set.add(stu1);</span><br><span class="line">set.add(stu2);</span><br><span class="line">System.out.println(<span class="string">&quot;set size:&quot;</span> + set.size());</span><br></pre></td></tr></table></figure>
-
-<h3 id="覆盖equals没有覆盖hashCode，hashCode不相等"><a href="#覆盖equals没有覆盖hashCode，hashCode不相等" class="headerlink" title="覆盖equals没有覆盖hashCode，hashCode不相等"></a>覆盖equals没有覆盖hashCode，hashCode不相等</h3><p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172309105.png"></p>
-<h3 id="没有覆盖equals覆盖hashCode，equals为false"><a href="#没有覆盖equals覆盖hashCode，equals为false" class="headerlink" title="没有覆盖equals覆盖hashCode，equals为false"></a>没有覆盖equals覆盖hashCode，equals为false</h3><p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172332799.png"></p>
-<h3 id="覆盖equals覆盖hashCode，set集合的个数为一，说明是同一个对象。"><a href="#覆盖equals覆盖hashCode，set集合的个数为一，说明是同一个对象。" class="headerlink" title="覆盖equals覆盖hashCode，set集合的个数为一，说明是同一个对象。"></a>覆盖equals覆盖hashCode，set集合的个数为一，说明是同一个对象。</h3><p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172419787.png"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
-<p>将对象放入到集合中时，<strong>首先判断要放入对象的hashcode值</strong>与集合中的任意一个元素的hashcode值是否相等，如果不相等直接将该对象放入集合中。如果hashcode值相等，然后<strong>再通过equals方法判断</strong>要放入对象与集合中的任意一个对象是否相等，如果equals判断不相等，直接将该元素放入到集合中，否则不放入。</p>
-</blockquote>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhuyeshen/p/10954275.html">https://www.cnblogs.com/zhuyeshen/p/10954275.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012056417/article/details/54110314">https://blog.csdn.net/u012056417/article/details/54110314</a></p>
-
-      
-      
-    </div>
-    
-    <footer class="article-footer">
-      
-        <a data-url="http://example.com/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/" data-id="ckt2qcu9c0000qsvv6mq6ea5n" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/09/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2021-09-01T07:49:27.000Z" itemprop="datePublished">2021-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a>
-    </h1>
-  
-
-<!-- 开始添加字数统计-->
-    
-          <div style="margin-top:10px;">
-	    <span class="post-time">
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-keyboard-o"></i>
-	        <span class="post-meta-item-text">  字数统计: </span>
-	        <!-- 安装插件npm install hexo-wordcount --save -->
-	        <span class="post-count">87字</span>
-	      </span>
-	    </span>
-	
-	    <span class="post-time">
-	      &nbsp; | &nbsp;
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-hourglass-half"></i>
-	        <span class="post-meta-item-text">  阅读时长: </span>
-	        <span class="post-count">1分</span>
-	      </span>
-	    </span>
-	</div>
-    
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>关于hexo，换主题一事还没有整完，目前由于在本地测试，还有很多问题没有解决。</p>
-<h2 id="9-2："><a href="#9-2：" class="headerlink" title="9.2："></a>9.2：</h2><p>完成了主题大概的布局，很多都被我删除了，然后添加了一个文章字数和阅读时长统计的功能还有一个网站访问量的统计功能。</p>
-
-      
-      
-    </div>
-    
-    <footer class="article-footer">
-      
-        <a data-url="http://example.com/2021/09/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckt1a14q900012cvv7zw1ejad" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo常用命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/08/31/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time datetime="2021-08-31T07:47:24.000Z" itemprop="datePublished">2021-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/31/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">hexo常用命令</a>
-    </h1>
-  
-
-<!-- 开始添加字数统计-->
-    
-          <div style="margin-top:10px;">
-	    <span class="post-time">
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-keyboard-o"></i>
-	        <span class="post-meta-item-text">  字数统计: </span>
-	        <!-- 安装插件npm install hexo-wordcount --save -->
-	        <span class="post-count">49字</span>
-	      </span>
-	    </span>
-	
-	    <span class="post-time">
-	      &nbsp; | &nbsp;
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-hourglass-half"></i>
-	        <span class="post-meta-item-text">  阅读时长: </span>
-	        <span class="post-count">1分</span>
-	      </span>
-	    </span>
-	</div>
-    
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><strong>hexo常用命令</strong></p>
-<p>新增文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;文件名&quot;</span><br></pre></td></tr></table></figure>
-
-<p>新增页面</p>
-<blockquote>
-<p>hexo n page “页面名称”</p>
-</blockquote>
-<p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>生成</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate </span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>部署</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>清理缓存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210831155417926.png"></p>
-
-      
-      
-    </div>
-    
-    <footer class="article-footer">
-      
-        <a data-url="http://example.com/2021/08/31/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckt1a14q300002cvvgaq5dlnh" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
       
