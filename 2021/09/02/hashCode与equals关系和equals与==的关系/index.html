@@ -1,147 +1,231 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
 <head>
-  <meta charset="utf-8">
-  
-  <title>hashCode与equals关系和equals与==的关系 | jijiejiojio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Set render engine for 360 browser -->
-  <meta name="renderer" content="webkit">
-  <!-- No Baidu Siteapp-->
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
-  <meta name="description" content="equals 与 &#x3D;&#x3D;的区别 ：&#x3D;&#x3D;是运算符，equal是方法equals方法的作用  1、默认情况（没有覆盖equals方法）下equals方法都是调用Object类的equals方法，而Object的equals方法主要用于判断对象的内存地址引用是不是同一个地址（是不是同一个对象）。 2 、要是类中覆盖了equals方法，那么就要根据具体的代码来确定equals方法的作用了，覆盖后一般都是通过">
-<meta property="og:type" content="article">
-<meta property="og:title" content="hashCode与equals关系和equals与&#x3D;&#x3D;的关系">
-<meta property="og:url" content="http://example.com/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/index.html">
-<meta property="og:site_name" content="jijiejiojio">
-<meta property="og:description" content="equals 与 &#x3D;&#x3D;的区别 ：&#x3D;&#x3D;是运算符，equal是方法equals方法的作用  1、默认情况（没有覆盖equals方法）下equals方法都是调用Object类的equals方法，而Object的equals方法主要用于判断对象的内存地址引用是不是同一个地址（是不是同一个对象）。 2 、要是类中覆盖了equals方法，那么就要根据具体的代码来确定equals方法的作用了，覆盖后一般都是通过">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/.com//image-20210902164326281.png">
-<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902164349984.png">
-<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172309105.png">
-<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172332799.png">
-<meta property="og:image" content="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172419787.png">
-<meta property="article:published_time" content="2021-09-02T09:29:00.000Z">
-<meta property="article:modified_time" content="2021-09-06T07:47:24.714Z">
-<meta property="article:author" content="jijiejiojio">
-<meta property="article:tag" content="java基础">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/.com//image-20210902164326281.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+    <meta name="author" content="jijiejiojio">
+
+
+
+
+
+<title>hashCode与equals关系和equals与==的关系 | jijiejiojio</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">jijiejiojio</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">首页</a>
-        
-          <a class="main-nav-link" href="/archives">文章</a>
-        
-      </nav>
-      <!--
-      <nav id="sub-nav">
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="example.com">
-        </form>
-      </div>
-      -->
-    </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main"><article id="post-hashCode与equals关系和equals与==的关系" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/" class="article-date">
-  <time datetime="2021-09-02T09:29:00.000Z" itemprop="datePublished">2021-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      hashCode与equals关系和equals与==的关系
-    </h1>
-  
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
 
-<!-- 开始添加字数统计-->
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">jijiejiojio&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" target="_blank" rel="noopener" href="https://jijiejiojio.github.io/tecDoc/">Categories</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
     
-          <div style="margin-top:10px;">
-	    <span class="post-time">
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-keyboard-o"></i>
-	        <span class="post-meta-item-text">  字数统计: </span>
-	        <!-- 安装插件npm install hexo-wordcount --save -->
-	        <span class="post-count">1.3k字</span>
-	      </span>
-	    </span>
-	
-	    <span class="post-time">
-	      &nbsp; | &nbsp;
-	      <span class="post-meta-item-icon">
-	        <i class="fa fa-hourglass-half"></i>
-	        <span class="post-meta-item-text">  阅读时长: </span>
-	        <span class="post-count">5分</span>
-	      </span>
-	    </span>
-	</div>
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">jijiejiojio&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" target="_blank" rel="noopener" href="https://jijiejiojio.github.io/tecDoc/">Categories</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
     
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#equals-%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB-%EF%BC%9A-%E6%98%AF%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8Cequal%E6%98%AF%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">equals 与 &#x3D;&#x3D;的区别 ：&#x3D;&#x3D;是运算符，equal是方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#equals%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">equals方法的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8Bequals-%E4%B8%8E"><span class="toc-number">3.</span> <span class="toc-text">常见的几种情况下equals 与 &#x3D;&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.</span> <span class="toc-text">比较基本类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">比较包装类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83String%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.3.</span> <span class="toc-text">比较String类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.4.</span> <span class="toc-text">比较对象类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hashCode%E4%B8%8Eequals%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">hashCode与equals方法的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%86%E7%9B%96-%E4%B8%8D%E6%98%AF%E9%87%8D%E8%BD%BD-equals%E6%96%B9%E6%B3%95%E4%B8%80%E5%AE%9A%E8%A6%81%E8%A6%86%E7%9B%96hashCode%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">为什么覆盖(不是重载)equals方法一定要覆盖hashCode方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%86%E7%9B%96equals%E6%B2%A1%E6%9C%89%E8%A6%86%E7%9B%96hashCode%EF%BC%8ChashCode%E4%B8%8D%E7%9B%B8%E7%AD%89"><span class="toc-number">4.1.1.</span> <span class="toc-text">覆盖equals没有覆盖hashCode，hashCode不相等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89%E8%A6%86%E7%9B%96equals%E8%A6%86%E7%9B%96hashCode%EF%BC%8Cequals%E4%B8%BAfalse"><span class="toc-number">4.1.2.</span> <span class="toc-text">没有覆盖equals覆盖hashCode，equals为false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%86%E7%9B%96equals%E8%A6%86%E7%9B%96hashCode%EF%BC%8Cset%E9%9B%86%E5%90%88%E7%9A%84%E4%B8%AA%E6%95%B0%E4%B8%BA%E4%B8%80%EF%BC%8C%E8%AF%B4%E6%98%8E%E6%98%AF%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E3%80%82"><span class="toc-number">4.1.3.</span> <span class="toc-text">覆盖equals覆盖hashCode，set集合的个数为一，说明是同一个对象。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.2.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
-          </div>
-        
-        <h1 id="equals-与-的区别-：-是运算符，equal是方法"><a href="#equals-与-的区别-：-是运算符，equal是方法" class="headerlink" title="equals 与 ==的区别 ：==是运算符，equal是方法"></a>equals 与 ==的区别 ：==是运算符，equal是方法</h1><h1 id="equals方法的作用"><a href="#equals方法的作用" class="headerlink" title="equals方法的作用"></a>equals方法的作用</h1><p>  1、默认情况（没有覆盖equals方法）下equals方法都是调用Object类的equals方法，而Object的equals方法主要用于判断对象的内存地址引用是不是同一个地址（是不是同一个对象）。</p>
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">hashCode与equals关系和equals与==的关系</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">jijiejiojio</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">九月 2, 2021&nbsp;&nbsp;17:29:00</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="equals-与-的区别-：-是运算符，equal是方法"><a href="#equals-与-的区别-：-是运算符，equal是方法" class="headerlink" title="equals 与 ==的区别 ：==是运算符，equal是方法"></a>equals 与 ==的区别 ：==是运算符，equal是方法</h1><h1 id="equals方法的作用"><a href="#equals方法的作用" class="headerlink" title="equals方法的作用"></a>equals方法的作用</h1><p>  1、默认情况（没有覆盖equals方法）下equals方法都是调用Object类的equals方法，而Object的equals方法主要用于判断对象的内存地址引用是不是同一个地址（是不是同一个对象）。</p>
 <p>2 、要是类中覆盖了equals方法，那么就要根据具体的代码来确定equals方法的作用了，覆盖后一般都是通过对象的内容是否相等来判断对象是否相等。</p>
 <h1 id="常见的几种情况下equals-与"><a href="#常见的几种情况下equals-与" class="headerlink" title="常见的几种情况下equals 与 =="></a>常见的几种情况下equals 与 ==</h1><h2 id="比较基本类型"><a href="#比较基本类型" class="headerlink" title="比较基本类型"></a>比较基本类型</h2><p>Java基本类型：8种（int short long byte float double boolean char）</p>
 <p>只能用==，不能用equals，这里的==比较的是两个变量的值。</p>
 <h2 id="比较包装类型"><a href="#比较包装类型" class="headerlink" title="比较包装类型"></a>比较包装类型</h2><p>==比较的内存地址，new出来的对象地址不同。</p>
 <p>equals比较的是值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">Integer integer2 = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;equals:&quot;</span>+integer1.equals(integer2));</span><br><span class="line">System.out.println(<span class="string">&quot;==:&quot;</span>+(integer1 == integer2));</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">integer1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);</span><br><span class="line"><span class="type">Integer</span> <span class="variable">integer2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;equals:&quot;</span>+integer1.equals(integer2));</span><br><span class="line">System.out.println(<span class="string">&quot;==:&quot;</span>+(integer1 == integer2));</span><br></pre></td></tr></table></figure>
 
 <p><img src="/.com//image-20210902164326281.png" alt="image-20210902164326281"></p>
 <p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902164349984.png"></p>
 <h2 id="比较String类型"><a href="#比较String类型" class="headerlink" title="比较String类型"></a>比较String类型</h2><p>==比较的是内存地址，equals比较的是值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//String</span></span><br><span class="line">String str1 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">String str2 = <span class="keyword">new</span> String(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">String str3 = str2; <span class="comment">// 引用传递，同一对象</span></span><br><span class="line">String str4 = <span class="keyword">new</span> String(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">String str5 = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">System.out.println(str1 == str2); <span class="comment">// false（str2是new的一个新地址）</span></span><br><span class="line">System.out.println(str1 == str3); <span class="comment">// false（str3和str2内存地址一样，和str1地址不同）</span></span><br><span class="line">System.out.println(str2 == str3); <span class="comment">// true（引用str2，地址相同）</span></span><br><span class="line">System.out.println(str1 == str5); <span class="comment">// true（String作为基本类型，没创建新地址）</span></span><br><span class="line">System.out.println(str4 == str2); <span class="comment">// false（内存地址不同）</span></span><br><span class="line">System.out.println(str1.equals(str2)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str1.equals(str3)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str2.equals(str3)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str2.equals(str4)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str1.equals(str5)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//String</span></span><br><span class="line"><span class="type">String</span> <span class="variable">str1</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">str2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">str3</span> <span class="operator">=</span> str2; <span class="comment">// 引用传递，同一对象</span></span><br><span class="line"><span class="type">String</span> <span class="variable">str4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">str5</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">System.out.println(str1 == str2); <span class="comment">// false（str2是new的一个新地址）</span></span><br><span class="line">System.out.println(str1 == str3); <span class="comment">// false（str3和str2内存地址一样，和str1地址不同）</span></span><br><span class="line">System.out.println(str2 == str3); <span class="comment">// true（引用str2，地址相同）</span></span><br><span class="line">System.out.println(str1 == str5); <span class="comment">// true（String作为基本类型，没创建新地址）</span></span><br><span class="line">System.out.println(str4 == str2); <span class="comment">// false（内存地址不同）</span></span><br><span class="line">System.out.println(str1.equals(str2)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str1.equals(str3)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str2.equals(str3)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str2.equals(str4)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br><span class="line">System.out.println(str1.equals(str5)); <span class="comment">// true（内容一致，都是“hello”）</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="比较对象类型"><a href="#比较对象类型" class="headerlink" title="比较对象类型"></a>比较对象类型</h2><p>==和equals比较的都是内存地址，因为没有equals没有被重写。默认是Object类的equals方法。</p>
 <p>如果对象类重写了equals方法，equals比较的就是值。</p>
@@ -149,9 +233,9 @@
 <p>equals方法和hashCode方法如果不同时按你自己逻辑覆盖的话，HashMap就会出问题。</p>
 <p>比如你只覆盖了equals方法而没有覆盖hashCode方法，那么HashMap在第一步寻找链表的时候会出错，有同样值的两个对象Key1和Key2并不会指向同一个链表或桶，因为你没有提供自己的hashCode方法，那么就会使用<strong>Object的hashCode方法，该方法是根据内存地址来比较两个对象是否一致</strong>，由于Key1和Key2有不桶的内存地址，所以会指向不同的链表，这样HashMap会认为key2不存在，虽然我们期望Key1和Key2是同一个对象；</p>
 <p>反之如果只覆盖了hashCode方法而没有覆盖equals方法，那么虽然第一步操作会使Key1和Key2找到同一个链表，但是由于equals没有覆盖，那么在遍历链表的元素时，key1.equals(key2)也会失败(事实上Object的equals方法也是比较内存地址)，从而HashMap认为不存在Key2对象，这同样也是不正确的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(String age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        Student student = (Student) o;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (name != <span class="keyword">null</span> ? !name.equals(student.name) : student.name != <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> age != <span class="keyword">null</span> ? age.equals(student.age) : student.age == <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = name != <span class="keyword">null</span> ? name.hashCode() : <span class="number">0</span>;</span><br><span class="line">        result = <span class="number">31</span> * result + (age != <span class="keyword">null</span> ? age.hashCode() : <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String age;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(String age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span> == o) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="literal">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> (Student) o;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (name != <span class="literal">null</span> ? !name.equals(student.name) : student.name != <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> age != <span class="literal">null</span> ? age.equals(student.age) : student.age == <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> name != <span class="literal">null</span> ? name.hashCode() : <span class="number">0</span>;</span><br><span class="line">        result = <span class="number">31</span> * result + (age != <span class="literal">null</span> ? age.hashCode() : <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;Student&gt; list = <span class="keyword">new</span> LinkedList&lt;Student&gt;();</span><br><span class="line">Set&lt;Student&gt; set = <span class="keyword">new</span> HashSet&lt;Student&gt;();</span><br><span class="line">Student stu1 = <span class="keyword">new</span> Student(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;17&quot;</span>);</span><br><span class="line">Student stu2 = <span class="keyword">new</span> Student(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;17&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;stu1 == stu2 : &quot;</span> + (stu1 == stu2));</span><br><span class="line">System.out.println(<span class="string">&quot;stu1.equals(stu2) : &quot;</span> + stu1.equals(stu2));</span><br><span class="line">list.add(stu1);</span><br><span class="line">list.add(stu2);</span><br><span class="line">System.out.println(<span class="string">&quot;list size:&quot;</span> + list.size());</span><br><span class="line">System.out.println(stu1.hashCode());</span><br><span class="line">System.out.println(stu2.hashCode());</span><br><span class="line">set.add(stu1);</span><br><span class="line">set.add(stu2);</span><br><span class="line">System.out.println(<span class="string">&quot;set size:&quot;</span> + set.size());</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">LinkedList&lt;Student&gt; list = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;Student&gt;();</span><br><span class="line">Set&lt;Student&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;Student&gt;();</span><br><span class="line"><span class="type">Student</span> <span class="variable">stu1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;17&quot;</span>);</span><br><span class="line"><span class="type">Student</span> <span class="variable">stu2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;张三&quot;</span>, <span class="string">&quot;17&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;stu1 == stu2 : &quot;</span> + (stu1 == stu2));</span><br><span class="line">System.out.println(<span class="string">&quot;stu1.equals(stu2) : &quot;</span> + stu1.equals(stu2));</span><br><span class="line">list.add(stu1);</span><br><span class="line">list.add(stu2);</span><br><span class="line">System.out.println(<span class="string">&quot;list size:&quot;</span> + list.size());</span><br><span class="line">System.out.println(stu1.hashCode());</span><br><span class="line">System.out.println(stu2.hashCode());</span><br><span class="line">set.add(stu1);</span><br><span class="line">set.add(stu2);</span><br><span class="line">System.out.println(<span class="string">&quot;set size:&quot;</span> + set.size());</span><br></pre></td></tr></table></figure>
 
 <h3 id="覆盖equals没有覆盖hashCode，hashCode不相等"><a href="#覆盖equals没有覆盖hashCode，hashCode不相等" class="headerlink" title="覆盖equals没有覆盖hashCode，hashCode不相等"></a>覆盖equals没有覆盖hashCode，hashCode不相等</h3><p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172309105.png"></p>
 <h3 id="没有覆盖equals覆盖hashCode，equals为false"><a href="#没有覆盖equals覆盖hashCode，equals为false" class="headerlink" title="没有覆盖equals覆盖hashCode，equals为false"></a>没有覆盖equals覆盖hashCode，equals为false</h3><p><img src="https://gitee.com/jijiejiojio/pic/raw/master/img/image-20210902172332799.png"></p>
@@ -163,195 +247,55 @@
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhuyeshen/p/10954275.html">https://www.cnblogs.com/zhuyeshen/p/10954275.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012056417/article/details/54110314">https://blog.csdn.net/u012056417/article/details/54110314</a></p>
 
-      
-      
-  <div class="article-statement">
-    <hr>  
-    1.如果本文帮到了您，不妨点一下右下角的 <a>分享到</a> 按钮。<br>
-    2.除非注明，本博文章均为原创，转载请以链接形式标明本文地址。<br>
-    3.本博文章只代表博主当时的观点或结论，与博主公司没有任何关系。<br>
-  </div>
+        </div>
 
-    </div>
-    
-    <footer class="article-footer">
-      
-        <a data-url="http://example.com/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/" data-id="ckt2qcu9c0000qsvv6mq6ea5n" class="article-share-link">分享到</a>
-      
-
-      
-
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2021/09/06/MySQL%E7%B4%A2%E5%BC%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
         
-          MySQL索引
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
         
-      </div>
-    </a>
-  
-  
-    <a href="/2021/09/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">第一篇博客</div>
-    </a>
-  
-</nav>
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/source/tags/java%E5%9F%BA%E7%A1%80/"># java基础</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/09/06/MySQL%E7%B4%A2%E5%BC%95/">MySQL索引</a>
+            
+            
+            <a class="next" rel="next" href="/2021/09/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">第一篇博客</a>
+            
+        </section>
 
-  
-</article>
 
-</section>
-      
-      <aside id="sidebar">
-  
-    <div class="widget-wrap">
-  <h3 class="widget-title">推荐文章</h3>
-  <div class="widget">
-    <ul>
-      
-      
-    </ul>
-  </div>
+    </article>
 </div>
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年 09月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年 08月</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a><span class="tag-list-count">1</span></li></ul>
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© jijiejiojio | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  <!-- <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
-   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      Copyright &copy; 2021 - 2021 <a href="/" target="_blank">jijiejiojio</a>.
-      &nbsp;
-      
-        <span id="busuanzi_container_site_pv">
-          本站总访问量<span id="busuanzi_value_site_pv"></span>次
-        </span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv" style='display:none'>
-          本站访客数<span id="busuanzi_value_site_uv"></span>人
-        </span>
-      
- 
-      <!-- <span id="busuanzi_container_site_pv">
-        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
-      </span>
-      <span id="busuanzi_container_site_uv">
-        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人.
-      </span>
-       -->
-    </div>
-  </div>
 </footer>
 
-
-
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/archives" class="mobile-nav-link">文章</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-</div>
-
-<!-- totop end -->
-
-
-<!-- 百度分享 start -->
-
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<! -- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-                processEscapes: true
-                    
-}
-  
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-                  
-}
-    
-        });
-</script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Queue(function() {
-            var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
-                            all[i].SourceElement().parentNode.className += ' has-jax';
-                                    
-            }
-                
-        });
-</script>
-
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-<script src="/js/script.js"></script>
-
-
-</div>
+    </div>
 </body>
+
 </html>

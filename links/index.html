@@ -13,7 +13,7 @@
 
 
 
-<title>第一篇博客 | jijiejiojio</title>
+<title>友情链接 | jijiejiojio</title>
 
 
 
@@ -125,136 +125,13 @@
 </script>
             <div class="main">
                 <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">第一篇博客</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">jijiejiojio</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">九月 1, 2021&nbsp;&nbsp;15:49:27</a>
-                        </span>
-                    
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <p>关于hexo，换主题一事还没有整完，目前由于在本地测试，还有很多问题没有解决。</p>
-<h2 id="9-2："><a href="#9-2：" class="headerlink" title="9.2："></a>9.2：</h2><p>完成了主题大概的布局，很多都被我删除了，然后添加了一个文章字数和阅读时长统计的功能还有一个网站访问量的统计功能。</p>
-
-        </div>
-
+    <article class="post-wrap page">
         
-            <section class="post-copyright">
-                
-                
-                
-                
-
-            </section>
+        <h2 class="post-title">友情链接</h2>
         
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/source/tags/hexo/"># hexo</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2021/09/02/hashCode%E4%B8%8Eequals%E5%85%B3%E7%B3%BB%E5%92%8Cequals%E4%B8%8E==%E7%9A%84%E5%85%B3%E7%B3%BB/">hashCode与equals关系和equals与==的关系</a>
-            
-            
-            <a class="next" rel="next" href="/2021/08/31/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">hexo常用命令</a>
+        <section class="post-content">
             
         </section>
-
-
     </article>
 </div>
 
